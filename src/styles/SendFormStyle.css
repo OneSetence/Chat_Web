@@ -1,0 +1,59 @@
+.sendzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background-color: #F4F4F4;
+    border-radius: 40px;
+    padding: 20px 10px 20px 20px;/* 오른쪽 여백을 조금 더 작게 설정 */
+    box-sizing: border-box;
+    height: 55px;
+    position: relative;
+}
+
+.input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: none;
+    padding-right: 40px; /* 전송 버튼을 위한 오른쪽 패딩 추가 */
+}
+
+.input::placeholder {
+    color: #888;
+}
+
+.sendbtn {
+    position: absolute;
+    right: 10px; /* 입력창 안에서 오른쪽 여백 설정 */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px; /* 버튼 크기 조정 */
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%; /* 완전한 원형으로 만들기 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* 커서 스타일 추가 */
+}
+
+.sendIcon {
+    width: 40px; /* 아이콘 크기 조정 */
+    height: 40px;
+    color: #4B525B; /* 아이콘 색상 */
+}

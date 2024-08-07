@@ -1,10 +1,16 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Header from'./component/Header'
+import SendForm from './component/SendForm'
 
 function App() {
   return (
-    <Header />
+    <div>
+      <Header />
+      <SendForm />
+    </div>
+    
+
   );
 }
 
