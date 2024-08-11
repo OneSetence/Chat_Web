@@ -8,7 +8,7 @@ class MyChat extends Component {
             <div className='outMy'>
                 <div className='my'>
                 <span className='myText'>
-                    {this.props.name} {/* this.props를 사용하여 접근 */}
+                    {this.props.msg} {/* this.props를 사용하여 접근 */}
                 </span>
             </div>
             </div>
