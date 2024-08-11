@@ -35,11 +35,11 @@ function App() {
                 if (message.body) {
                     const msg = JSON.parse(message.body);
                     if (msg.label === 'yesorno') {
-                        addMessage(<YesOrNoChat msg={msg.data} />);
-                    } else if (msg.label === 'date') {
-                        addMessage(<DateSelectChat msg={msg.data} />);
+                        addMessage(<YesOrNoChat title={msg.todoTitle} date={msg.start}/>);
+                    } else if (msg.label === 'select') {
+                        addMessage(<DateSelectChat start1={msg.start1} start2={msg.start2} start3={msg.start3} />);
                     } else {
-                        addMessage(<MyChat msg={msg.data} />);
+                        addMessage(<MyChat msg={msg.data} />); // 나중에 기본 other로 바꾸기
                     }
                 }
             });
