@@ -1,0 +1,90 @@
+.other {
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 30%;
+    background-color: #EDEEF0;
+    border-radius: 17px;
+    padding: 13px;
+    display: inline-block; 
+}
+.otherText {
+    color: #232326;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px; /* 106.667% */
+}
+
+.outMy {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.my {
+    background-color: #0094FF;
+    border-radius: 17px;
+    padding: 13px;
+    margin-top: 3%;
+    margin-left: 50%; /* 왼쪽 여백을 자동 설정 */
+    margin-right: 5%; /* 오른쪽 여백 최소화 */
+    display: inline-block; /* inline-block으로 설정하여 글자 수에 따라 크기 조절 */
+    word-wrap: break-word;
+}
+
+.myText {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px; /* 106.667% */
+}
+
+.YesOrNoBtn {
+
+    background-color: #E6F7FF;
+    border-radius: 100px;
+    padding: 13px;
+    border: none;
+}
+
+.BtnRow {
+    display: grid; /* Grid를 사용하여 요소를 배치 */
+    grid-template-columns: repeat(2, auto); /* 두 개의 열을 생성하여 각 버튼을 행으로 배치 */
+    gap: 10px; /* 버튼들 사이에 간격 추가 */
+    justify-content: start; /* 버튼들을 왼쪽 정렬 */
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 50%;
+}
+
+.btnText {
+    color: #0094FF;
+}
+
+.OtherTitle {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.DateSelect {
+
+    background-color: #E6F7FF;
+    border-radius: 100px;
+    padding: 13px;
+    border: none;
+}
+
+.DateBox {
+    display: grid; /* Grid를 사용하여 요소를 배치 */
+    grid-template-columns: repeat(2, auto); /* 두 개의 열을 생성하여 각 버튼을 행으로 배치 */
+    gap: 10px; /* 버튼들 사이에 간격 추가 */
+    justify-content: start; /* 버튼들을 왼쪽 정렬 */
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 10%;
+    background-color: #E6F7FF;
+    border-radius: 100px;
+    padding: 13px;
+    border: none;
+    display: inline-block; 
+}
