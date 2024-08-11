@@ -16,12 +16,31 @@ class SendForm extends Component {
 
     sendChat = () => {
         const { chat } = this.state;
+        const { client, chatroomId } = this.props; // 부모 컴포넌트로부터 전달된 WebSocket 클라이언트와 채팅방 ID
+
         if (chat === '') {
             return;
         }
-        
-        // 부모 컴포넌트(App.js)로 메시지 전달
-        this.props.addMessage(chat);
+
+        // 서버로 메시지 전송
+        client.publish({
+            destination: "/pub/chat/" + chatroomId,
+            body: JSON.stringify({
+                type: "CHAT",
+                sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)
+                channelId: chatroomId,
+                data: chat,
+                label: "gpt" // label을 'gpt'로 설정
+            }),
+        });
+
+        // 부모 컴포넌트(App.js)로 전송된 메시지 전달 (로컬에도 메시지 기록)
+        this.props.addMessage({
+            sender: "user123",
+            data: chat,
+            date: new Date().toLocaleTimeString(),
+            label: "gpt"
+        });
 
         // 입력 필드 초기화
         this.setState({ chat: '' });
