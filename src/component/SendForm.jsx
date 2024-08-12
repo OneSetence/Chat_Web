@@ -24,12 +24,12 @@ class SendForm extends Component {
 
         // 서버로 메시지 전송
         client.publish({
-            destination: "/pub/chatroom/" + chatroomId,
+            destination: "/pub/chatroom/hanfinal",
             body: JSON.stringify({
-                type: "CHAT",
-                sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)
-                channelId: chatroomId,
-                data: chat,
+                //type: "CHAT",
+               // sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)
+                //channelId: chatroomId,
+                message: chat,
                 label: "gpt" // label을 'gpt'로 설정
             }),
         });
