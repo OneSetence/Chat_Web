@@ -3,7 +3,7 @@ import './App.css';
 import Header from './component/Header';
 import SendForm from './component/SendForm';
 import MyChat from './component/MyChat';
-import YesOrNoChat from './component/YesOrNoChat'; 
+import YesOrNoChat from './component/YesOrNoChat';
 import DateSelectChat from './component/DateSelectChat';
 import * as StompJs from '@stomp/stompjs';
 
@@ -14,7 +14,19 @@ function App() {
 
     // 새로운 메시지를 추가하는 함수
     const addMessage = (message) => {
-        setMessages((prevMessages) => [...prevMessages, message]);
+        setMessages((prevMessages) => [...prevMessages, renderMessage(message)]);
+    };
+
+    // 메시지를 JSX로 변환하는 함수
+    const renderMessage = (message) => {
+        if (message.type === 'yesorno') {
+            return <YesOrNoChat key={message.todoId} title={message.message} date={message.date} />;
+        } else if (message.type === 'select') {
+            return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
+        } else {
+            // MyChat 컴포넌트에 객체의 특정 값을 전달하여 렌더링
+            return <MyChat key={message.todoId} msg={message.message} />;
+        }
     };
 
     // WebSocket 연결 설정
@@ -34,13 +46,7 @@ function App() {
             client.subscribe('/sub/chatroom/hanfinal', (message) => {
                 if (message.body) {
                     const msg = JSON.parse(message.body);
-                    if (msg.label === 'yesorno') {
-                        addMessage(<YesOrNoChat title={msg.todoTitle} date={msg.start}/>);
-                    } else if (msg.label === 'select') {
-                        addMessage(<DateSelectChat start1={msg.start1} start2={msg.start2} start3={msg.start3} />);
-                    } else {
-                        addMessage(<MyChat msg={msg.data} />); // 나중에 기본 other로 바꾸기
-                    }
+                    addMessage(msg);
                 }
             });
         };
