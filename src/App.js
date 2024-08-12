@@ -22,9 +22,9 @@ function App() {
 
     // 메시지를 JSX로 변환하는 함수
     const renderMessage = (message) => {
-        if (message.label === 'yesorno') {
+        if (message.label === 'yesorno') { 
             return <YesOrNoChat key={message.todoId} title={message.message} date={message.date} />;
-        } else if (message.label === 'date') {  // 오타 수정
+        } else if (message.label === 'date') {  
             return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
         } else {
             return <MyChat key={message.todoId} msg={message.message} />;
