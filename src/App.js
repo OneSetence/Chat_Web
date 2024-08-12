@@ -14,17 +14,19 @@ function App() {
 
     // 새로운 메시지를 추가하는 함수
     const addMessage = (message) => {
-        setMessages((prevMessages) => [...prevMessages, renderMessage(message)]);
+        // 중복 메시지 체크
+        if (!messages.some(msg => msg.key === message.todoId)) {
+            setMessages((prevMessages) => [...prevMessages, renderMessage(message)]);
+        }
     };
 
     // 메시지를 JSX로 변환하는 함수
     const renderMessage = (message) => {
         if (message.label === 'yesorno') {
             return <YesOrNoChat key={message.todoId} title={message.message} date={message.date} />;
-        } else if (message.laebl === 'date') {
+        } else if (message.label === 'date') {  // 오타 수정
             return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
         } else {
-            // MyChat 컴포넌트에 객체의 특정 값을 전달하여 렌더링
             return <MyChat key={message.todoId} msg={message.message} />;
         }
     };
