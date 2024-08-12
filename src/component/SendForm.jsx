@@ -28,18 +28,17 @@ class SendForm extends Component {
             body: JSON.stringify({
                 //type: "CHAT",
                // sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)
-                //channelId: chatroomId,
-                message: chat,
-                label: "gpt" // label을 'gpt'로 설정
+                todoId: 24,
+                type: "gpt",
+                message: chat // label을 'gpt'로 설정
             }),
         });
 
         // 부모 컴포넌트(App.js)로 전송된 메시지 전달 (로컬에도 메시지 기록)
         this.props.addMessage({
-            sender: "user123",
-            data: chat,
-            date: new Date().toLocaleTimeString(),
-            label: "gpt"
+            todoId: 24,
+            type: "gpt",
+            message: chat
         });
 
         // 입력 필드 초기화
