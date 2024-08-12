@@ -19,9 +19,9 @@ function App() {
 
     // 메시지를 JSX로 변환하는 함수
     const renderMessage = (message) => {
-        if (message.type === 'yesorno') {
+        if (message.label === 'yesorno') {
             return <YesOrNoChat key={message.todoId} title={message.message} date={message.date} />;
-        } else if (message.type === 'select') {
+        } else if (message.laebl === 'date') {
             return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
         } else {
             // MyChat 컴포넌트에 객체의 특정 값을 전달하여 렌더링
