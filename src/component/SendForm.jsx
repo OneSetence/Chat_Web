@@ -24,7 +24,7 @@ class SendForm extends Component {
 
         // 서버로 메시지 전송
         client.publish({
-            destination: "/pub/chat/" + chatroomId,
+            destination: "/pub/chatroom/" + chatroomId,
             body: JSON.stringify({
                 type: "CHAT",
                 sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)

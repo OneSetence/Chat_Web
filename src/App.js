@@ -20,7 +20,7 @@ function App() {
     // WebSocket 연결 설정
     const connect = () => {
         const client = new StompJs.Client({
-            brokerURL: 'https://9ede-122-36-149-213.ngrok-free.app/ws-stomp', // WebSocket 서버 URL
+            brokerURL: 'ws://localhost:8080/ws-stomp', // WebSocket 서버 URL
             debug: function (str) {
                 console.log(str);
             },
