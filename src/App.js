@@ -10,14 +10,16 @@ import * as StompJs from '@stomp/stompjs';
 function App() {
     const [messages, setMessages] = useState([]); // 메시지 상태를 App에서 관리
     const chatEndRef = useRef(null); // 마지막 요소에 대한 참조 생성
-    const [client, setClient] = useState(null); // WebSocket 클라이언트
+    const clientRef = useRef(null); // WebSocket 클라이언트를 useRef로 관리
 
     // 새로운 메시지를 추가하는 함수
     const addMessage = (message) => {
-        // 중복 메시지 체크
-        if (!messages.some(msg => msg.key === message.todoId)) {
-            setMessages((prevMessages) => [...prevMessages, renderMessage(message)]);
-        }
+        setMessages(prevMessages => {
+            if (prevMessages.some(msg => msg.key === message.todoId)) {
+                return prevMessages; // 중복된 메시지는 추가하지 않음
+            }
+            return [...prevMessages, renderMessage(message)];
+        });
     };
 
     // 메시지를 JSX로 변환하는 함수
@@ -58,13 +60,14 @@ function App() {
         };
 
         client.activate();
-        setClient(client);
+        clientRef.current = client; // WebSocket 클라이언트를 useRef에 저장
     };
 
     // WebSocket 연결 해제 함수
     const disconnect = () => {
-        if (client !== null) {
-            client.deactivate();
+        if (clientRef.current !== null) {
+            clientRef.current.deactivate();
+            clientRef.current = null; // 클라이언트 연결 해제 후 초기화
         }
     };
 
@@ -88,9 +91,10 @@ function App() {
                 ))}
                 <div ref={chatEndRef} className="bottom-padding"></div> {/* 스크롤 하단 여백 */}
             </div>
-            <SendForm addMessage={addMessage} client={client} chatroomId="bot-chatroom" /> {/* SendForm에 메시지 추가 함수 및 WebSocket 클라이언트 전달 */}
+            <SendForm addMessage={addMessage} client={clientRef.current} chatroomId="bot-chatroom" /> {/* SendForm에 메시지 추가 함수 및 WebSocket 클라이언트 전달 */}
         </div>
     );
 }
 
 export default App;
+
