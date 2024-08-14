@@ -8,7 +8,7 @@ class DateSelectChat extends Component {
             <div>
                 <div className='other'>
                     <span className='otherText'>
-                        {this.props.msg} {/* this.props를 사용하여 접근 */}
+                        아래 중 선택할 수 있는 일정이 있나요?
                     </span>
                 </div>
 
