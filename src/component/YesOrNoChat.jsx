@@ -8,7 +8,7 @@ class YesOrNoChat extends Component {
             <div>
                 <div className='other'>
                     <span className='otherText'>
-                         예진님이 아래 일정을 변경하고 싶어해요!
+                         예진님이 아래 일정을 변경하고 싶어해요
                     </span>
                 </div>
                 <div className='other'>
