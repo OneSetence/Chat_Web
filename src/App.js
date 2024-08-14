@@ -24,21 +24,21 @@ function App() {
 
     // 메시지를 JSX로 변환하는 함수
     const renderMessage = (message) => {
-        if (message.messageType === 'yesorno') { 
+        if (message.label === 'yesorno') { 
             return <YesOrNoChat key={message.todoId} title={message.message} date={message.date} onResponse={handleResponse} />;
-        } else if (message.messageType === 'date') {  
+        } else if (message.label === 'date') {  
             return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
         } else {
             return <MyChat key={message.todoId} msg={message.message} />;
         }
     };
 
-    // 사용자가 응답을 선택했을 때 호출되는 함수 (예/아니요)
+    // 사용자가 응답을 선택했을 때 호출되는 함수
     const handleResponse = (response) => {
         // 1. "아니요"라는 메시지를 MyChat으로 추가
         addMessage({
             todoId: `response_${new Date().getTime()}`, // 고유한 ID 생성
-            messageType: 'mychat',
+            label: 'mychat',
             message: response,
             date: new Date().toLocaleTimeString(),
         });
@@ -48,8 +48,8 @@ function App() {
             clientRef.current.publish({
                 destination: '/pub/chatroom/hanfinal',
                 body: JSON.stringify({
-                    type: "yesorno",
-                    message: response // "예" 또는 "아니요" 응답
+                    type: "RESPONSE",
+                    message: response
                 }),
             });
         }
