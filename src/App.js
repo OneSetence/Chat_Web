@@ -6,6 +6,7 @@ import MyChat from './component/MyChat';
 import YesOrNoChat from './component/YesOrNoChat';
 import DateSelectChat from './component/DateSelectChat';
 import * as StompJs from '@stomp/stompjs';
+import OtherChat from './component/OtherChat';
 
 function App() {
     const [messages, setMessages] = useState([]); // 메시지 상태를 App에서 관리
@@ -29,7 +30,7 @@ function App() {
         } else if (message.label === 'date') {  
             return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
         } else {
-            return <MyChat key={message.todoId} msg={message.message} />;
+            return <OtherChat key={message.todoId} msg={message.message} />;
         }
     };
 
