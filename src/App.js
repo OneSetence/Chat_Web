@@ -29,8 +29,10 @@ function App() {
             return <YesOrNoChat key={message.todoId} title={message.message} date={message.start} onResponse={handleResponse} />;
         } else if (message.label === 'date') {  
             return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
+        } else if (message.label === 'message') {
+            return <OtherChat key={message.todoId} msg={message.message} />
         } else {
-            return <OtherChat key={message.todoId} msg={message.message} />;
+            return <MyChat key={message.todoId} msg={message.message} />;
         }
     };
 
