@@ -48,7 +48,7 @@ function App() {
             clientRef.current.publish({
                 destination: '/pub/chatroom/hanfinal',
                 body: JSON.stringify({
-                    type: "RESPONSE",
+                    type: "yesorno",
                     message: response
                 }),
             });
