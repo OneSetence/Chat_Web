@@ -48,6 +48,7 @@ function App() {
             clientRef.current.publish({
                 destination: '/pub/chatroom/hanfinal',
                 body: JSON.stringify({
+                    todoId: 33,
                     type: "yesorno",
                     message: response
                 }),

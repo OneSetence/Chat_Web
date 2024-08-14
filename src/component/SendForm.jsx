@@ -28,7 +28,7 @@ class SendForm extends Component {
             body: JSON.stringify({
                 //type: "CHAT",
                // sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)
-                todoId: 24,
+                todoId: 33,
                 type: "gpt",
                 message: chat // label을 'gpt'로 설정
             }),
