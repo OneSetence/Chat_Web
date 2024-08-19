@@ -7,6 +7,7 @@ import YesOrNoChat from './component/YesOrNoChat';
 import DateSelectChat from './component/DateSelectChat';
 import * as StompJs from '@stomp/stompjs';
 import OtherChat from './component/OtherChat';
+import { todoId, setTodoId } from '../global';
 
 function App() {
     const [messages, setMessages] = useState([]); // 메시지 상태를 App에서 관리
@@ -18,6 +19,10 @@ function App() {
         setMessages(prevMessages => {
             if (prevMessages.some(msg => msg.key === message.todoId)) {
                 return prevMessages; // 중복된 메시지는 추가하지 않음
+            }
+            // message.label === 'yesorno'일 경우 전역 변수로 todoId 저장
+            if (message.label === 'yesorno') {
+                setTodoId(message.todoId);  // 전역 변수에 저장
             }
             return [...prevMessages, renderMessage(message)];
         });
@@ -51,7 +56,7 @@ function App() {
             clientRef.current.publish({
                 destination: '/pub/chatroom/hanfinal',
                 body: JSON.stringify({
-                    todoId: 33,
+                    todoId: todoId,
                     type: "yesorno",
                     message: response
                 }),

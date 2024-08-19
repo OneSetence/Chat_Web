@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ArrowUpCircleIcon } from '@heroicons/react/24/solid';
 import '../styles/SendFormStyle.css';
+import { todoId } from '../global';
 
 class SendForm extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class SendForm extends Component {
             body: JSON.stringify({
                 //type: "CHAT",
                // sender: "user123", // 실제 사용자 식별자 (하드코딩되어 있지만 실제 앱에서는 동적으로 설정 가능)
-                todoId: 33,
+                todoId: todoId,
                 type: "gpt",
                 message: chat // label을 'gpt'로 설정
             }),
@@ -36,7 +37,7 @@ class SendForm extends Component {
 
         // 부모 컴포넌트(App.js)로 전송된 메시지 전달 (로컬에도 메시지 기록)
         this.props.addMessage({
-            todoId: 24,
+            todoId: todoId,
             type: "gpt",
             message: chat
         });
