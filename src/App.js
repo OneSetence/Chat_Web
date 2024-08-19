@@ -7,7 +7,7 @@ import YesOrNoChat from './component/YesOrNoChat';
 import DateSelectChat from './component/DateSelectChat';
 import * as StompJs from '@stomp/stompjs';
 import OtherChat from './component/OtherChat';
-import { todoId, setTodoId } from '../global';
+import { todoId, setTodoId } from './global';
 
 function App() {
     const [messages, setMessages] = useState([]); // 메시지 상태를 App에서 관리
