@@ -67,7 +67,7 @@ function App() {
     // WebSocket 연결 설정
     const connect = () => {
         const client = new StompJs.Client({
-            brokerURL: 'ws://localhost:8080/ws-stomp', // WebSocket 서버 URL
+            brokerURL: 'ws://onesentence.store/ws-stomp', // WebSocket 서버 URL
             debug: function (str) {
                 console.log(str);
             },
