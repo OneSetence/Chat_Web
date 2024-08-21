@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ArrowUpCircleIcon } from '@heroicons/react/24/solid';
 import '../styles/SendFormStyle.css';
-import { todoId} from '../global';
+import { todoId } from '../global';
 
 class SendForm extends Component {
     constructor(props) {
