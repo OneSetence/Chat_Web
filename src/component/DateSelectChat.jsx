@@ -12,24 +12,30 @@ class DateSelectChat extends Component {
                     </span>
                 </div>
 
-                <div className='DateBox'>
+                {this.props.start1 && (
+                    <div className='DateBox'>
                         <span className='btnText'>
-                        {this.props.start1}
+                            {this.props.start1}
                         </span>
-                </div>
-                <div className='DateBox'>
+                    </div>
+                )}
+
+                {this.props.start2 && (
+                    <div className='DateBox'>
                         <span className='btnText'>
-                        {this.props.start2}
+                            {this.props.start2}
                         </span>
-                </div>
-                <div className='DateBox'>
+                    </div>
+                )}
+
+                {this.props.start3 && (
+                    <div className='DateBox'>
                         <span className='btnText'>
-                        {this.props.start3}
+                            {this.props.start3}
                         </span>
-                </div>
-            
+                    </div>
+                )}
             </div>
-            
         );
     }
 }
