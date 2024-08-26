@@ -9,7 +9,6 @@ import * as StompJs from '@stomp/stompjs';
 import OtherChat from './component/OtherChat';
 import { todoId, setTodoId } from './global';
 import SockJS from 'sockjs-client';
-import * as StompJs from '@stomp/stompjs';
 
 function App() {
     const [messages, setMessages] = useState([]); // 메시지 상태를 App에서 관리
