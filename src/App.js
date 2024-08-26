@@ -8,6 +8,8 @@ import DateSelectChat from './component/DateSelectChat';
 import * as StompJs from '@stomp/stompjs';
 import OtherChat from './component/OtherChat';
 import { todoId, setTodoId } from './global';
+import SockJS from 'sockjs-client';
+import * as StompJs from '@stomp/stompjs';
 
 function App() {
     const [messages, setMessages] = useState([]); // 메시지 상태를 App에서 관리
@@ -72,7 +74,7 @@ function App() {
             debug: function (str) {
                 console.log(str);
             },
-            
+
             reconnectDelay: 5000, // 자동 재연결 설정
             heartbeatIncoming: 4000,
             heartbeatOutgoing: 4000,
