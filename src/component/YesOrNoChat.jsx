@@ -11,10 +11,15 @@ class YesOrNoChat extends Component {
             <div>
                 <div className='other'>
                     <span className='otherText'>
-                         예진님이 아래 일정을 변경하고 싶어해요
+                    {this.props.nickName}님이 {this.props.message}
                     </span>
                 </div>
                 <div className='other'>
+                    <div>
+                        <span className='otherText'>
+                            일정 : {this.props.title} {/* this.props를 사용하여 접근 */}
+                        </span>
+                    </div>
             
                     <div>
                         <span className='otherText'>
