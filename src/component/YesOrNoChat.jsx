@@ -11,7 +11,7 @@ class YesOrNoChat extends Component {
             <div>
                 <div className='other'>
                     <span className='otherText'>
-                    {this.props.username}님이 {this.props.msg}
+                    {this.props.msg}
                     </span>
                 </div>
                 <div className='other'>
