@@ -34,7 +34,7 @@ function App() {
         if (message.label === 'yesorno') { 
             return <YesOrNoChat key={message.todoId} msg={message.message} date={message.start} title={message.todoTitle} onResponse={handleResponse} />;
         } else if (message.label === 'date') {  
-            return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} />;
+            return <DateSelectChat key={message.todoId} start1={message.start1} start2={message.start2} start3={message.start3} onDateSelect={handleDateSelection} />;
         } else if (message.label === 'message') {
             return <OtherChat key={message.todoId} msg={message.message} />
         } else {
@@ -44,7 +44,6 @@ function App() {
 
     // 사용자가 응답을 선택했을 때 호출되는 함수
     const handleResponse = (response) => {
-        // 1. "아니요"라는 메시지를 MyChat으로 추가
         addMessage({
             todoId: `response_${new Date().getTime()}`, // 고유한 ID 생성
             label: 'mychat',
@@ -52,7 +51,7 @@ function App() {
             date: new Date().toLocaleTimeString(),
         });
 
-        // 2. WebSocket을 통해 서버로 "아니요" 메시지 전송
+        // WebSocket을 통해 서버로 메시지 전송
         if (clientRef.current) {
             clientRef.current.publish({
                 destination: '/pub/chatroom/hanfinal',
@@ -60,6 +59,29 @@ function App() {
                     todoId: todoId,
                     type: "yesorno",
                     message: response
+                }),
+            });
+        }
+    };
+
+    // 날짜 선택 시 호출되는 함수
+    const handleDateSelection = (selectedDate) => {
+        // 선택한 날짜를 MyChat으로 추가
+        addMessage({
+            todoId: `dateResponse_${new Date().getTime()}`,
+            label: 'mychat',
+            message: selectedDate,
+            date: new Date().toLocaleTimeString(),
+        });
+
+        // WebSocket을 통해 서버로 선택한 날짜 메시지 전송
+        if (clientRef.current) {
+            clientRef.current.publish({
+                destination: '/pub/chatroom/hanfinal',
+                body: JSON.stringify({
+                    todoId: todoId,
+                    type: "date",
+                    message: selectedDate
                 }),
             });
         }
@@ -73,7 +95,6 @@ function App() {
             debug: function (str) {
                 console.log(str);
             },
-
             reconnectDelay: 5000, // 자동 재연결 설정
             heartbeatIncoming: 4000,
             heartbeatOutgoing: 4000,

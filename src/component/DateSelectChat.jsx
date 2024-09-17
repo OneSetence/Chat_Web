@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import * as StompJs from "@stomp/stompjs";
 import styles from '../styles/ChatBoxStyle.css';
 
 class DateSelectChat extends Component {
+    handleDateClick = (date) => {
+        this.props.onDateSelect(date); // 부모 컴포넌트로 선택한 날짜 전송
+    };
+
     render() {
         return (
             <div>
@@ -13,7 +16,7 @@ class DateSelectChat extends Component {
                 </div>
 
                 {this.props.start1 && (
-                    <div className='DateBox'>
+                    <div className='DateBox' onClick={() => this.handleDateClick(this.props.start1)}>
                         <span className='btnText'>
                             {this.props.start1}
                         </span>
@@ -21,7 +24,7 @@ class DateSelectChat extends Component {
                 )}
 
                 {this.props.start2 && (
-                    <div className='DateBox'>
+                    <div className='DateBox' onClick={() => this.handleDateClick(this.props.start2)}>
                         <span className='btnText'>
                             {this.props.start2}
                         </span>
@@ -29,7 +32,7 @@ class DateSelectChat extends Component {
                 )}
 
                 {this.props.start3 && (
-                    <div className='DateBox'>
+                    <div className='DateBox' onClick={() => this.handleDateClick(this.props.start3)}>
                         <span className='btnText'>
                             {this.props.start3}
                         </span>
